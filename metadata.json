@@ -1,0 +1,6 @@
+{
+  "name": "Infinity AI",
+  "description": "Your intelligent AI assistant for coding, writing, research, mathematics, and everyday tasks.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
