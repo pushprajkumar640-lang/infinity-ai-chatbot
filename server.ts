@@ -247,9 +247,40 @@ function formatMessagesForGemini(messages: any[]) {
 
 function formatMessagesForOpenRouter(messages: any[], systemPrompt?: string) {
   const result: any[] = [];
-  if (systemPrompt && systemPrompt.trim()) {
-    result.push({ role: "system", content: systemPrompt.trim() });
-  }
+  const FINAL_SYSTEM_PROMPT = `
+You are Infinity AI.
+Current date and time: ${new Date().toLocaleString("en-IN", {
+  timeZone: "Asia/Kolkata",
+})}
+
+Never use a fixed date like May 22, 2024.
+Always answer using the current date above.
+
+Your creator is Pushpraj Kumar.
+
+If anyone asks:
+- Who created you?
+- Who made you?
+- Tumhe kisne banaya?
+- Tumhara creator kaun hai?
+- Who is your owner?
+
+Always reply:
+"I was created by Pushpraj Kumar."
+
+Never say:
+- Google created me
+- OpenAI created me
+- Anthropic created me
+- I am created by Google
+
+For every other question, answer normally.
+`;
+
+result.push({
+  role: "system",
+  content: FINAL_SYSTEM_PROMPT + "\n\n" + (systemPrompt || "")
+});
 
   for (const msg of messages) {
     const role = msg.role === "user" ? "user" : "assistant";
@@ -313,10 +344,11 @@ async function callOpenRouterApi({
     method: "POST",
     headers,
     body: JSON.stringify({
-      model,
-      messages,
-      stream: false,
-    }),
+  model,
+  messages,
+  temperature: 0.2,
+  stream: false,
+}),
   });
 
   const rawText = await response.text();
@@ -369,10 +401,11 @@ async function* streamOpenRouterApi({
     method: "POST",
     headers,
     body: JSON.stringify({
-      model,
-      messages,
-      stream: true,
-    }),
+    model,
+    messages,
+    temperature: 0.2,
+    stream: true,
+}),
   });
 
   if (!response.ok) {
@@ -502,11 +535,33 @@ async function executeChat({
 
         for (const useGrounding of groundingOptions) {
           try {
+            const currentDate = new Date().toLocaleString("en-IN", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  timeZone: "Asia/Kolkata",
+});
             const res = await ai.models.generateContent({
               model: candidateModel,
               contents: formattedContents,
               config: {
-                systemInstruction: systemPrompt || "You are Infinity AI, a helpful, precise, and intelligent AI assistant. Provide answers in a clean, clear format using Markdown, headings, lists, tables, and formatted code blocks where applicable. For math questions, state the final answer clearly first, followed by a step-by-step explanation if helpful.",
+               systemInstruction: `${systemPrompt || "You are Infinity AI."}
+
+Current date and time: ${currentDate}
+
+Your creator is Pushpraj Kumar.
+
+If anyone asks who created you, who made you, who is your owner, or "Tumhara creator kaun hai?", always reply:
+
+"Mujhe Pushpraj Kumar ne banaya hai. Main Pushpraj Kumar ka AI assistant hoon."
+
+Never say you were created by Google or that Google is your owner. If asked about the underlying AI model, say:
+"My AI model is powered by Google's Gemini, but my creator is Pushpraj Kumar."
+`,
                 ...(useGrounding ? { tools: [{ googleSearch: {} }] } : {}),
               },
             });
@@ -740,7 +795,33 @@ app.post("/api/chat/stream", async (req, res) => {
                 model: candidateModel,
                 contents: formattedContents,
                 config: {
-                  systemInstruction: systemPrompt || "You are Infinity AI, a helpful, precise, and intelligent AI assistant. Provide answers in a clean, clear format using Markdown, headings, lists, tables, and formatted code blocks where applicable. For math questions, state the final answer clearly first, followed by a step-by-step explanation if helpful.",
+               systemInstruction: `
+You are Infinity AI.
+
+Current date and time: ${new Date().toLocaleString("en-IN", {
+  timeZone: "Asia/Kolkata",
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+})}
+
+Never say today's date is May 22, 2024 or any fixed date.
+Always use the current date and time shown above.
+
+Your creator is Pushpraj Kumar.
+
+If anyone asks who created you, who made you, who is your owner, or "Tumhara creator kaun hai?", reply:
+"Main Pushpraj Kumar ke dwara banaya gaya AI assistant hoon."
+
+If someone asks about the AI model, reply:
+"My AI model is powered by Google's Gemini, but my creator is Pushpraj Kumar."
+
+${systemPrompt || ""}
+`,
                   ...(useGrounding ? { tools: [{ googleSearch: {} }] } : {}),
                 },
               });
