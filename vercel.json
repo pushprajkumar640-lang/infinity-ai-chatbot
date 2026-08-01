@@ -1,9 +1,14 @@
 {
-  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "GEMINI_API_KEY": "@gemini_api_key",
+    "OPENROUTER_API_KEY": "@openrouter_api_key"
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/server.ts"
+      "destination": "/api"
     },
     {
       "source": "/(.*)",
