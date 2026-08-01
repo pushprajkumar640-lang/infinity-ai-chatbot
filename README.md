@@ -2,6 +2,10 @@
 
 Infinity AI is a modern AI-powered chatbot built with React, TypeScript, and Vite. It provides an elegant user interface with AI conversation, speech recognition, image support, theme switching, and chat history.
 
+## 🌐 Live Demo
+
+### 🚀 [Infinity AI Chatbot](https://infinity-ai-chatbot-production.up.railway.app)
+
 ## ✨ Features
 
 - 🤖 AI Chat Assistant
