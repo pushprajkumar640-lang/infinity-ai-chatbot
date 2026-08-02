@@ -335,8 +335,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 type="file"
                 multiple
                 accept="image/*,.pdf,.txt,.doc,.docx"
-                onChange={(e) => e.target.files && processFiles(Array.from(e.target.files))}
-                className="hidden"
+               onChange={(e) => {
+  e.stopPropagation();
+  e.preventDefault();
+  if (e.target.files) {
+    processFiles(Array.from(e.target.files));
+    e.target.value = '';
+  }
+}}
+               className="hidden pointer-events-none"
               />
             </button>
 
@@ -352,8 +359,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 type="file"
                 accept="image/*"
                 capture="environment"
-                onChange={(e) => e.target.files && processFiles(Array.from(e.target.files))}
-                className="hidden"
+               onChange={(e) => {
+  e.stopPropagation();
+  e.preventDefault();
+  if (e.target.files) {
+    processFiles(Array.from(e.target.files));
+    e.target.value = '';
+  }
+}}
+               className="hidden pointer-events-none"
               />
             </button>
 
