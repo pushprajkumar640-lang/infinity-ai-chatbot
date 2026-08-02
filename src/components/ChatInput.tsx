@@ -154,20 +154,20 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       recognition.lang = "en-IN"; // Set language to English (India)
 
       recognition.onresult = (event: any) => {
-  const result = event.results[event.results.length - 1];
+        const result = event.results[event.results.length - 1];
 
-  if (!result.isFinal) return;
+        if (!result.isFinal) return;
 
-  const transcript = result[0].transcript.trim();
+        const transcript = result[0].transcript.trim();
 
-  setText(transcript);
-};
+        setText(transcript);
+      };
 
       recognition.onerror = (event: any) => {
-  console.log("Speech Error:", event.error);
-  alert("Speech Error: " + event.error);
-  setIsRecording(false);
-};
+        console.log("Speech Error:", event.error);
+        alert("Speech Error: " + event.error);
+        setIsRecording(false);
+      };
       recognition.onend = () => setIsRecording(false);
       console.log("Starting speech recognition...");
 
@@ -335,15 +335,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 type="file"
                 multiple
                 accept="image/*,.pdf,.txt,.doc,.docx"
-               onChange={(e) => {
-  e.stopPropagation();
-  e.preventDefault();
-  if (e.target.files) {
-    processFiles(Array.from(e.target.files));
-    e.target.value = '';
-  }
-}}
-               className="hidden pointer-events-none"
+                onChange={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (e.target.files) {
+                    processFiles(Array.from(e.target.files));
+                    e.target.value = '';
+                  }
+                }}
+                className="hidden pointer-events-none"
               />
             </button>
 
@@ -359,15 +359,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 type="file"
                 accept="image/*"
                 capture="environment"
-               onChange={(e) => {
-  e.stopPropagation();
-  e.preventDefault();
-  if (e.target.files) {
-    processFiles(Array.from(e.target.files));
-    e.target.value = '';
-  }
-}}
-               className="hidden pointer-events-none"
+                onChange={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (e.target.files) {
+                    processFiles(Array.from(e.target.files));
+                    e.target.value = '';
+                  }
+                }}
+                className="hidden pointer-events-none"
               />
             </button>
 
