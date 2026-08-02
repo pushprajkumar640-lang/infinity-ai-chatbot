@@ -4,7 +4,6 @@ import {
   Send,
   Square,
   Paperclip,
-  Camera,
   Mic,
   MicOff,
   X,
@@ -347,30 +346,6 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               />
             </button>
 
-            {/* Camera Capture Button */}
-            <button
-              onClick={openCameraModal}
-              className={`rounded-lg p-2 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-600 hover:text-slate-900' : 'hover:bg-white/10 hover:text-cyan-300'}`}
-              title="Take Photo with Camera"
-            >
-              <Camera className="h-4 w-4" />
-              <input
-                ref={cameraInputRef}
-                type="file"
-                accept="image/*"
-                capture="environment"
-                onChange={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  if (e.target.files) {
-                    processFiles(Array.from(e.target.files));
-                    e.target.value = '';
-                  }
-                }}
-                className="hidden pointer-events-none"
-              />
-            </button>
-
             {/* Voice Input Button */}
             <button
               onClick={toggleRecording}
@@ -474,7 +449,6 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                   onClick={capturePhoto}
                   className="flex items-center gap-2 rounded-xl bg-cyan-600 px-5 py-2 text-xs font-semibold text-white hover:bg-cyan-500 shadow-lg shadow-cyan-600/25"
                 >
-                  <Camera className="h-4 w-4" />
                   <span>Capture Photo</span>
                 </button>
               </div>
