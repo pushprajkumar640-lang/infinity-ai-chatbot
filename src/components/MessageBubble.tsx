@@ -168,7 +168,7 @@ utterance.volume = 1;
       </div>
 
       {/* Message Content & Metadata */}
-      <div className={`flex max-w-[85%] sm:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
+      <div className={`flex w-full sm:max-w-[85%] md:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
         
         {/* Author & Timestamp */}
         <div className={`flex items-center gap-2 text-xs font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>

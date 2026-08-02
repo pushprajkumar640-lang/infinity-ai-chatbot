@@ -251,7 +251,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className="relative w-full max-w-4xl mx-auto px-3 sm:px-6 pb-4 pt-2"
+     className="relative w-full md:max-w-4xl md:mx-auto px-3 sm:px-6 pb-4 pt-2"
     >
       {/* Drag & Drop Overlay */}
       <AnimatePresence>

@@ -275,4 +275,91 @@
 .katex-display .katex {
   color: #f8fafc;
 }
+/* ==================== MOBILE RESPONSIVE STYLING ==================== */
+@media (max-width: 640px) {
+  .markdown-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .markdown-content table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 0.4rem 0.5rem;
+    min-width: 60px;
+    white-space: nowrap;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .markdown-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .markdown-content a {
+    word-break: break-word;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    padding-left: 1rem;
+  }
+
+  .markdown-content li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .markdown-content blockquote {
+    padding-left: 0.6rem;
+    margin-left: 0;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-content table {
+    font-size: 0.75rem;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 0.3rem 0.4rem;
+    min-width: 50px;
+  }
+
+  .katex-display {
+    padding: 0.3rem 0.5rem;
+  }
+}
 
