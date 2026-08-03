@@ -57,7 +57,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
   return (
     <div className={`relative flex flex-1 flex-col h-full w-full overflow-hidden transition-colors ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'}`}>
       {/* Premium Minimal Header */}
-      <header className={`flex h-14 shrink-0 items-center justify-between border-b px-4 md:px-6 z-10 select-none backdrop-blur-md transition-colors ${isLight ? 'border-slate-200 bg-white/80 text-slate-900' : 'border-white/10 bg-slate-900/80 text-slate-100'}`}>
+     <header className={`sticky top-0 flex h-14 shrink-0 items-center justify-between border-b px-4 md:px-6 z-10 select-none backdrop-blur-md transition-colors ${isLight ? 'border-slate-200 bg-slate-50/80' : 'border-slate-800 bg-slate-950/80'}`}>
         <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={onToggleSidebar}
