@@ -102,7 +102,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
       </header>
 
       {/* Main Chat Conversation Container */}
-     <div className="flex-1 overflow-y-auto px-3 sm:px-6 md:px-12 py-6 space-y-6 w-full md:max-w-5xl md:mx-auto">
+    <div className="flex-1 overflow-y-auto px-3 sm:px-6 md:px-12 py-3 md:py-6 space-y-3 md:space-y-6 w-full md:max-w-5xl md:mx-auto">
         {/* Minimal Clean ChatGPT-style Welcome Screen */}
         {!hasMessages && (
           <div className="flex h-full min-h-[55vh] flex-col items-center justify-center text-center px-4 max-w-lg mx-auto">
