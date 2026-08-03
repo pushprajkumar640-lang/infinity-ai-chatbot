@@ -506,7 +506,7 @@ if (settings.enableVoiceOutput && "speechSynthesis" in window) {
   };
 
   return (
-    <div className={`flex h-screen w-screen overflow-hidden font-['Inter',sans-serif] ${settings.theme === 'light' ? 'bg-slate-50 text-slate-900' : 'bg-[#080c14] text-slate-100'}`}>
+   <div className={`flex h-dvh w-screen overflow-hidden font-['Inter',sans-serif] ${settings.theme === 'light' ? 'bg-slate-50 text-slate-900' : 'bg-[#080c14] text-slate-100'}`}>
       {/* Sidebar */}
       <Sidebar
         conversations={conversations}
