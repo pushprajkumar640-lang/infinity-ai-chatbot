@@ -203,8 +203,8 @@ utterance.volume = 1;
         )}
 
         {/* Message Bubble Box */}
-        <div
-          className={`relative rounded-2xl px-4 py-3 transition-all ${
+       <div
+  className={`relative w-full max-w-full overflow-x-auto rounded-2xl px-4 py-3 transition-all ${
             isUser
               ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md rounded-tr-none'
               : isLight
@@ -236,7 +236,7 @@ utterance.volume = 1;
               </div>
             </div>
           ) : (
-            <div className="markdown-content">
+            <div className="markdown-content w-full max-w-full overflow-x-auto break-words">
               {message.isError ? (
                 <div className="text-red-500 font-medium flex items-center gap-2">
                   <span>⚠️ {message.text}</span>

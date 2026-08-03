@@ -362,4 +362,27 @@
     padding: 0.3rem 0.5rem;
   }
 }
+.markdown-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
+.markdown-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.markdown-content th,
+.markdown-content td {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.markdown-content a {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
