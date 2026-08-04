@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Menu, Bot, Settings, Sun, Moon } from 'lucide-react';
 import { ChatConversation, AppSettings, Attachment } from '../types';
@@ -41,16 +41,36 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
   onToggleTheme,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+ const [autoScroll, setAutoScroll] = useState(true);
+const chatContainerRef = useRef<HTMLDivElement>(null);
+
+const handleScroll = () => {
+  const container = chatContainerRef.current;
+  if (!container) return;
+
+  const isNearBottom =
+    container.scrollHeight -
+    container.scrollTop -
+    container.clientHeight <
+    100;
+
+  setAutoScroll(isNearBottom);
+};
   const isLight = settings.theme === 'light';
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+ const scrollToBottom = () => {
+  if (!autoScroll) return;
 
-  useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({
+    behavior: "smooth",
+    block: "end",
+  });
+};
+ useEffect(() => {
+  if (autoScroll) {
     scrollToBottom();
-  }, [conversation?.messages, streamingText]);
-
+  }
+}, [conversation?.messages, streamingText, autoScroll]);
   const messages = conversation?.messages || [];
   const hasMessages = messages.length > 0;
 
@@ -102,7 +122,11 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
       </header>
 
       {/* Main Chat Conversation Container */}
-    <div className="flex-1 overflow-y-auto px-3 sm:px-6 md:px-12 py-3 md:py-6 space-y-3 md:space-y-6 w-full md:max-w-5xl md:mx-auto">
+    <div
+  ref={chatContainerRef}
+  onScroll={handleScroll}
+  className="flex-1 overflow-y-auto px-3 sm:px-6 md:px-12 py-3 md:py-6 space-y-3 md:space-y-6 w-full md:max-w-5xl md:mx-auto"
+>
         {/* Minimal Clean ChatGPT-style Welcome Screen */}
         {!hasMessages && (
           <div className="flex h-full min-h-[55vh] flex-col items-center justify-center text-center px-4 max-w-lg mx-auto">
