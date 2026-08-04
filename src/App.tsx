@@ -285,10 +285,16 @@ const cleanText = (data.text || "")
   .trim();
 
 const utterance = new SpeechSynthesisUtterance(cleanText);
-utterance.lang = "en-US";
-utterance.rate = settings.speechRate || 1.0;
+utterance.lang = "en-IN";
+utterance.rate = 0.75;
 utterance.pitch = 1;
 utterance.volume = 1;
+
+const voices = window.speechSynthesis.getVoices();
+utterance.voice =
+  voices.find(v => v.lang === "en-US" && v.name.includes("Google")) ??
+  voices.find(v => v.lang === "en-US") ??
+  null;
 
 window.speechSynthesis.speak(utterance);
         }
@@ -392,13 +398,25 @@ if (settings.enableVoiceOutput && "speechSynthesis" in window) {
     .replace(/\s+/g, " ")
     .trim();
 
-  const utterance = new SpeechSynthesisUtterance(cleanText);
-  utterance.lang = "en-US";
-  utterance.rate = settings.speechRate || 1.0;
-  utterance.pitch = 1;
-  utterance.volume = 1;
+ const utterance = new SpeechSynthesisUtterance(cleanText);
 
-  window.speechSynthesis.speak(utterance);
+utterance.lang = "en-IN";
+utterance.rate = 0.75;
+utterance.pitch = 1.0;
+utterance.volume = 1.0;
+
+const voices = window.speechSynthesis.getVoices();
+
+utterance.voice =
+  voices.find(
+    (voice) =>
+      voice.lang === "en-US" &&
+      voice.name.toLowerCase().includes("google")
+  ) ||
+  voices.find((voice) => voice.lang === "en-US") ||
+  null;
+
+window.speechSynthesis.speak(utterance);
 }
     } catch (err: any) {
       if (err.name === 'AbortError') {
