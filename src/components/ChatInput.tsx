@@ -251,7 +251,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   onDragOver={handleDragOver}
   onDragLeave={handleDragLeave}
   onDrop={handleDrop}
-  className="relative flex-shrink-0 w-full md:max-w-4xl md:mx-auto px-3 sm:px-6 pb-4 pt-2"
+  className="sticky bottom-0 z-20 relative flex-shrink-0 w-full max-w-4xl mx-auto px-2 sm:px-4 md:px-6 pb-[max(env(safe-area-inset-bottom),1rem)] pt-2"
 >
       {/* Drag & Drop Overlay */}
       <AnimatePresence>
@@ -272,7 +272,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
       {/* Main ChatGPT-style Input Box Container */}
       <div
-        className={`relative flex flex-col rounded-2xl p-2.5 sm:p-3 transition-all ${
+        className={`relative flex flex-col rounded-2xl p-3 sm:p-3.5 transition-all ${
           isLight
             ? 'bg-white shadow-lg border border-slate-200/90 ring-1 ring-slate-900/5 focus-within:ring-cyan-500/50 focus-within:border-cyan-500/50'
             : 'bg-slate-900/90 shadow-2xl border border-white/10 ring-1 ring-white/5 focus-within:ring-cyan-500/50 focus-within:border-cyan-500/30'
@@ -314,18 +314,18 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           onPaste={handlePaste}
           placeholder="Message Infinity AI..."
           rows={1}
-          className={`w-full resize-none bg-transparent px-2 py-1 text-sm md:text-base focus:outline-none min-h-[44px] max-h-[180px] ${
+          className={`w-full resize-none bg-transparent px-2 py-1 text-sm md:text-base focus:outline-none min-h-[48px] text-base md:text-sm max-h-[180px] ${
             isLight ? 'text-slate-900 placeholder-slate-400' : 'text-slate-100 placeholder-slate-400'
           }`}
         />
 
         {/* Action Controls Bar */}
-        <div className={`flex items-center justify-between pt-2 border-t ${isLight ? 'border-slate-100 text-slate-500' : 'border-white/5 text-slate-400'}`}>
+        <div className={`flex items-center justify-between gap-2 pt-2 border-t ${isLight ? 'border-slate-100 text-slate-500' : 'border-white/5 text-slate-400'}`}>
           <div className="flex items-center gap-1 sm:gap-1.5">
             {/* Gallery Attachment Button */}
             <button
               onClick={() => fileInputRef.current?.click()}
-              className={`rounded-lg p-2 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-600 hover:text-slate-900' : 'hover:bg-white/10 hover:text-cyan-300'}`}
+              className={`rounded-lg p-2.5 md:p-2 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-600 hover:text-slate-900' : 'hover:bg-white/10 hover:text-cyan-300'}`}
               title="Attach File or Image"
             >
               <Paperclip className="h-4 w-4" />
@@ -349,7 +349,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             {/* Voice Input Button */}
             <button
               onClick={toggleRecording}
-              className={`relative rounded-lg p-2 transition-colors ${
+              className={`relative rounded-lg p-2.5 md:p-2 transition-colors ${
                 isRecording
                   ? 'bg-red-500/20 text-red-500 animate-pulse ring-1 ring-red-500'
                   : isLight
@@ -364,7 +364,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             {/* Voice Output Toggle */}
             <button
               onClick={onToggleVoiceOutput}
-              className={`rounded-lg p-2 transition-colors ${
+              className={`rounded-lg p-2.5 md:p-2 transition-colors ${
                 settings.enableVoiceOutput
                   ? 'text-cyan-600 bg-cyan-50'
                   : isLight
@@ -396,7 +396,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               <button
                 onClick={handleSend}
                 disabled={!text.trim() && attachments.length === 0}
-                className={`flex h-8 w-8 items-center justify-center rounded-xl transition-all ${
+                className={`flex h-10 w-10 md:h-8 md:w-8 items-center justify-center rounded-xl transition-all ${
                   text.trim() || attachments.length > 0
                     ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/25 hover:bg-cyan-500 hover:scale-105 active:scale-95'
                     : isLight

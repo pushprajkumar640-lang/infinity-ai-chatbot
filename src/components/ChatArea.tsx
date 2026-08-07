@@ -77,24 +77,42 @@ const handleScroll = () => {
   return (
     <div className={`relative flex flex-1 flex-col h-full w-full overflow-hidden transition-colors ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'}`}>
       {/* Premium Minimal Header */}
-     <header className={`sticky top-0 flex h-14 shrink-0 items-center justify-between border-b px-4 md:px-6 z-10 select-none backdrop-blur-md transition-colors ${isLight ? 'border-slate-200 bg-slate-50/80' : 'border-slate-800 bg-slate-950/80'}`}>
-        <div className="flex items-center gap-3 min-w-0">
-          <button
-            onClick={onToggleSidebar}
-            className={`rounded-lg p-1.5 transition-colors focus:outline-none ${isLight ? 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' : 'text-slate-400 hover:bg-white/10 hover:text-white'}`}
-            title="Toggle Sidebar"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+     <header
+  className={`sticky top-0 z-20 flex h-16 md:h-14 shrink-0 items-center justify-between border-b px-3 sm:px-4 md:px-6 backdrop-blur-md transition-colors ${
+    isLight
+      ? "border-slate-200 bg-slate-50/80"
+      : "border-slate-800 bg-slate-950/80"
+  }`}
+>
+  <div className="flex items-center gap-3 min-w-0">
+    <button
+      onClick={onToggleSidebar}
+      className={`rounded-lg p-2 md:p-1.5 transition-colors focus:outline-none ${
+        isLight
+          ? "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          : "text-slate-400 hover:bg-white/10 hover:text-white"
+      }`}
+      title="Toggle Sidebar"
+    >
+      <Menu className="h-5 w-5" />
+    </button>
 
-          <div className="flex items-center gap-2 min-w-0 select-none">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 text-white font-bold text-xs shadow-md shadow-cyan-500/20">
-              <Bot className="h-4 w-4 text-white" />
-            </div>
-            <span className={`font-['Poppins'] font-semibold text-sm md:text-base tracking-tight ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
-              Infinity AI
-            </span>
-          </div>
+    <div className="flex items-center gap-2 min-w-0 select-none">
+      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 text-white">
+        <Bot className="h-4 w-4" />
+      </div>
+
+      <span
+        className={`font-['Poppins'] font-semibold text-sm md:text-base ${
+          isLight ? "text-slate-900" : "text-slate-100"
+        }`}
+      >
+        Infinity AI
+      </span>
+    </div>
+  </div>
+
+  <div className="flex items-center gap-2">
         </div>
 
         {/* Clean Minimal Controls */}

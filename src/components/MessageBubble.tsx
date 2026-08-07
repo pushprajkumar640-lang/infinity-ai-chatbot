@@ -148,13 +148,13 @@ utterance.volume = 1;
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
-      className={`group relative flex w-full gap-3 md:gap-4 py-3 text-sm sm:text-base ${
+      className={`group relative flex w-full gap-2 sm:gap-3 md:gap-4 py-3 text-sm sm:text-base ${
         isUser ? 'flex-row-reverse' : 'flex-row'
       }`}
     >
       {/* Avatar */}
       <div
-        className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 select-none items-center justify-center rounded-xl font-medium shadow-md transition-transform ${
+        className={`flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 select-none items-center justify-center rounded-xl font-medium shadow-md transition-transform ${
           isUser
             ? 'bg-gradient-to-tr from-cyan-500 to-blue-600 text-white shadow-cyan-500/20'
             : 'bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-500 text-white shadow-indigo-500/20 ring-1 ring-white/10'
@@ -168,7 +168,7 @@ utterance.volume = 1;
       </div>
 
       {/* Message Content & Metadata */}
-      <div className={`flex w-full sm:max-w-[85%] md:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
+      <div className={`flex w-full max-w-full sm:max-w-[90%] md:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
         
         {/* Author & Timestamp */}
         <div className={`flex items-center gap-2 text-xs font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
@@ -204,7 +204,7 @@ utterance.volume = 1;
 
         {/* Message Bubble Box */}
        <div
-  className={`relative w-full max-w-full overflow-x-auto rounded-2xl px-4 py-3 transition-all ${
+  className={`relative w-full max-w-full overflow-x-auto rounded-2xl px-3 sm:px-4 py-3 break-words transition-all ${
             isUser
               ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md rounded-tr-none'
               : isLight
@@ -236,7 +236,7 @@ utterance.volume = 1;
               </div>
             </div>
           ) : (
-            <div className="markdown-content w-full max-w-full overflow-x-auto break-words">
+            <div className="markdown-content w-full max-w-full overflow-x-auto break-words whitespace-pre-wrap">
               {message.isError ? (
                 <div className="text-red-500 font-medium flex items-center gap-2">
                   <span>⚠️ {message.text}</span>
@@ -286,7 +286,7 @@ utterance.volume = 1;
                       rel="noopener noreferrer"
                       className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-colors border ${isLight ? 'bg-slate-100 text-slate-700 hover:text-cyan-600 hover:bg-slate-200 border-slate-200' : 'bg-slate-800/80 text-slate-300 hover:text-cyan-300 hover:bg-slate-700/80 border-white/5'}`}
                     >
-                      <span className="truncate max-w-[150px]">{source.web.title || source.web.uri}</span>
+                      <span className="truncate max-w-[120px] sm:max-w-[150px]">{source.web.title || source.web.uri}</span>
                       <ExternalLink className="h-3 w-3 shrink-0" />
                     </a>
                   ) : null
@@ -298,7 +298,7 @@ utterance.volume = 1;
 
         {/* Action Toolbar */}
         {!isEditing && (
-          <div className={`flex items-center gap-1 transition-opacity ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
+          <div className={`flex flex-wrap items-center gap-2 transition-opacity ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
             <button
               onClick={handleCopy}
               title="Copy Message"
@@ -412,7 +412,7 @@ const CodeBlock: React.FC<{ language: string; code: string; isLight?: boolean }>
       </div>
 
       {/* Code Body */}
-      <div className="overflow-x-auto p-4 font-mono text-xs md:text-sm leading-relaxed text-slate-100">
+      <div className="overflow-x-auto p-3 sm:p-4 font-mono text-xs md:text-sm leading-relaxed text-slate-100">
         <pre>
           <code>{code}</code>
         </pre>

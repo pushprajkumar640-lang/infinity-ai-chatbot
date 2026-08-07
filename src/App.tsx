@@ -524,7 +524,13 @@ window.speechSynthesis.speak(utterance);
   };
 
   return (
-   <div className={`flex h-dvh w-screen overflow-hidden font-['Inter',sans-serif] ${settings.theme === 'light' ? 'bg-slate-50 text-slate-900' : 'bg-[#080c14] text-slate-100'}`}>
+   <div
+  className={`flex h-dvh w-screen overflow-hidden overscroll-none font-['Inter',sans-serif] ${
+    settings.theme === 'light'
+      ? 'bg-slate-50 text-slate-900'
+      : 'bg-[#080c14] text-slate-100'
+  }`}
+>
       {/* Sidebar */}
       <Sidebar
         conversations={conversations}
@@ -558,7 +564,7 @@ window.speechSynthesis.speak(utterance);
         onEditMessage={handleEditMessage}
         onDeleteMessage={handleDeleteMessage}
         onToggleLikeMessage={handleToggleLikeMessage}
-        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
         onToggleVoiceOutput={() =>
           setSettings((prev) => ({ ...prev, enableVoiceOutput: !prev.enableVoiceOutput }))
         }

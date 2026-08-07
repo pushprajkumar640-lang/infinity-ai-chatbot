@@ -143,7 +143,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar Drawer */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 flex w-80 flex-col transition-all duration-300 ease-in-out lg:static lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 flex w-full max-w-[22rem] sm:w-80 flex-col transition-all duration-300 ease-in-out lg:w-80 lg:max-w-none lg:static lg:translate-x-0 ${
           isLight
             ? 'bg-slate-50 border-r border-slate-200 text-slate-900'
             : 'glass-panel border-r border-white/10 text-slate-100'
@@ -175,27 +175,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* New Chat Button */}
         <div className="p-4 pb-2">
           <button
-            onClick={() => {
-              onNewChat();
-              if (window.innerWidth < 1024) onClose();
-            }}
-            className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 px-4 py-2.5 font-medium text-xs sm:text-sm text-white shadow-lg shadow-cyan-600/20 transition-all hover:shadow-cyan-600/35 hover:scale-[1.01] active:scale-[0.98]"
-          >
-            <Plus className="h-4 w-4 transition-transform group-hover:rotate-90" />
-            <span>New Chat</span>
-          </button>
+  onClick={() => {
+    onNewChat();
+    if (window.innerWidth < 1024) onClose();
+  }}
+  className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 px-4 py-3 lg:py-2.5 font-medium text-sm lg:text-xs text-white shadow-lg shadow-cyan-600/20 transition-all hover:shadow-cyan-600/35 hover:scale-[1.01] active:scale-[0.98]"
+>
+  <Plus className="h-4 w-4 transition-transform group-hover:rotate-90" />
+  <span>New Chat</span>
+</button>
         </div>
 
         {/* Search Bar */}
         <div className="px-4 py-2">
           <div className="relative flex items-center">
-            <Search className={`absolute left-3 h-3.5 w-3.5 ${isLight ? 'text-slate-400' : 'text-slate-400'}`} />
+           <Search className={`absolute left-3 h-4 w-4 lg:h-3.5 lg:w-3.5 ${isLight ? 'text-slate-400' : 'text-slate-400'}`} />
             <input
               type="text"
               placeholder="Search history..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full rounded-xl py-2 pl-8 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
+              className={`w-full rounded-xl py-2.5 pl-10 pr-3 text-sm lg:text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
                 isLight
                   ? 'bg-white text-slate-900 placeholder-slate-400 ring-1 ring-slate-200'
                   : 'bg-slate-900/60 text-slate-200 placeholder-slate-500 ring-1 ring-white/10'
@@ -406,7 +406,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
     <div className="relative group">
       <div
         onClick={() => !isEditing && onSelectChat(chat.id)}
-        className={`flex items-center justify-between gap-2 rounded-xl px-3 py-2 text-xs font-medium cursor-pointer transition-all ${
+        className={`flex items-center justify-between gap-2 rounded-xl px-3 py-3 lg:py-2 text-sm lg:text-xs font-medium cursor-pointer transition-all ${
           isActive
             ? isLight
               ? 'bg-cyan-100/90 text-cyan-950 border border-cyan-300 shadow-sm font-semibold'
@@ -435,15 +435,15 @@ const ChatItem: React.FC<ChatItemProps> = ({
         </div>
 
         {!isEditing && (
-          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+         <div className="flex items-center gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onToggleMenu(chat.id);
               }}
-              className={`rounded p-1 transition-colors ${isLight ? 'hover:bg-slate-300/80 text-slate-500 hover:text-slate-900' : 'hover:bg-white/10 text-slate-400 hover:text-white'}`}
+              className={`rounded p-2 lg:p-1 transition-colors touch-manipulation ${isLight ? 'hover:bg-slate-300/80 text-slate-500 hover:text-slate-900' : 'hover:bg-white/10 text-slate-400 hover:text-white'}`}
             >
-              <MoreVertical className="h-3.5 w-3.5" />
+              <MoreVertical className="h-5 w-5 lg:h-3.5 lg:w-3.5" />
             </button>
           </div>
         )}
@@ -455,13 +455,13 @@ const ChatItem: React.FC<ChatItemProps> = ({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className={`absolute right-2 top-8 z-50 w-44 rounded-xl p-1.5 shadow-2xl border text-xs ${
+           className={`absolute right-0 top-10 z-50 w-56 max-w-[90vw] rounded-xl p-2 shadow-2xl border text-sm lg:w-44 lg:text-xs ${
               isLight ? 'bg-white border-slate-200 text-slate-800 shadow-xl' : 'glass-panel border-white/15 text-slate-200'
             }`}
           >
             <button
               onClick={() => onTogglePin(chat.id)}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-cyan-300'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-cyan-300'}`}
             >
               <Pin className="h-3.5 w-3.5 text-cyan-600" />
               {chat.isPinned ? 'Unpin Chat' : 'Pin Chat'}
@@ -469,7 +469,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
             <button
               onClick={() => onStartRename(chat)}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-white'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-white'}`}
             >
               <Pencil className="h-3.5 w-3.5 text-slate-500" />
               Rename
@@ -477,7 +477,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
             <button
               onClick={() => onShare(chat)}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-white'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-white'}`}
             >
               <Share2 className="h-3.5 w-3.5 text-blue-600" />
               Share
@@ -490,7 +490,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
                 onExportMD(chat);
                 onToggleMenu(chat.id);
               }}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-purple-300'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-purple-300'}`}
             >
               <FileCode className="h-3.5 w-3.5 text-purple-600" />
               Export Markdown
@@ -501,7 +501,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
                 onExportTXT(chat);
                 onToggleMenu(chat.id);
               }}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-emerald-300'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-emerald-300'}`}
             >
               <FileText className="h-3.5 w-3.5 text-emerald-600" />
               Export Text
@@ -512,7 +512,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
                 onExportPDF(chat);
                 onToggleMenu(chat.id);
               }}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-amber-300'}`}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 transition-colors ${isLight ? 'hover:bg-slate-100 text-slate-700 hover:text-slate-900' : 'hover:bg-white/10 hover:text-amber-300'}`}
             >
               <Printer className="h-3.5 w-3.5 text-amber-600" />
               Print / Export PDF
@@ -522,7 +522,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
             <button
               onClick={() => onDelete(chat.id)}
-              className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors"
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 lg:gap-2 lg:px-2.5 lg:py-1.5 text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors"
             >
               <Trash2 className="h-3.5 w-3.5" />
               Delete Chat

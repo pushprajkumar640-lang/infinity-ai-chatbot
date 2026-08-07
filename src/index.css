@@ -277,11 +277,11 @@
 }
 /* ==================== MOBILE RESPONSIVE STYLING ==================== */
 @media (max-width: 640px) {
-  .markdown-content {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
+ .markdown-content {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
+}
 
   .markdown-content table {
     width: 100%;
@@ -371,18 +371,67 @@
 
 .markdown-content table {
   display: block;
-  width: 100%;
-  max-width: 100%;
+  width: max-content;
+  min-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .markdown-content th,
 .markdown-content td {
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
+  word-break: normal;
 }
 
 .markdown-content a {
   overflow-wrap: anywhere;
-  word-break: break-all;
+  word-break: break-word;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+pre,
+code {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  display: block;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
