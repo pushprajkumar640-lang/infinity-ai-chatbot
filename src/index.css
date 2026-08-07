@@ -391,10 +391,10 @@ border-collapse: collapse;
 
 .markdown-content th,
 .markdown-content td {
-white-space: nowrap;
-word-break: normal;
-overflow-wrap: normal;
-vertical-align: top;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
 }
 
 .markdown-content a {
