@@ -366,14 +366,17 @@
   width: 100%;
   max-width: 100%;
   overflow-wrap: anywhere;
-  word-break: break-word;
+  word-break: normal;
+  white-space: normal;
 }
 
 .markdown-content table {
   display: block;
   width: max-content;
   min-width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -392,6 +395,7 @@ html,
 body,
 #root {
   width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 

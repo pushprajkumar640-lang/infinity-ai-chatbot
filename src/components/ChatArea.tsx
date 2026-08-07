@@ -75,7 +75,7 @@ const handleScroll = () => {
   const hasMessages = messages.length > 0;
 
   return (
-    <div className={`relative flex flex-1 flex-col h-full w-full overflow-hidden transition-colors ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'}`}>
+    <div className={`relative flex flex-1 flex-col h-full w-full overflow-hidden overscroll-x-none transition-colors ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'}`}>
       {/* Premium Minimal Header */}
      <header
   className={`sticky top-0 z-20 flex h-16 md:h-14 shrink-0 items-center justify-between border-b px-3 sm:px-4 md:px-6 backdrop-blur-md transition-colors ${
@@ -85,6 +85,17 @@ const handleScroll = () => {
   }`}
 >
   <div className="flex items-center gap-3 min-w-0">
+    <button
+  onClick={onToggleSidebar}
+  className={`rounded-lg p-2 md:p-1.5 transition-colors focus:outline-none ${
+    isLight
+      ? "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+      : "text-slate-400 hover:bg-white/10 hover:text-white"
+  }`}
+  title="Toggle Sidebar"
+>
+  <Menu className="h-5 w-5" />
+</button>
     <button
       onClick={onToggleSidebar}
       className={`rounded-lg p-2 md:p-1.5 transition-colors focus:outline-none ${
@@ -111,9 +122,6 @@ const handleScroll = () => {
       </span>
     </div>
   </div>
-
-  <div className="flex items-center gap-2">
-        </div>
 
         {/* Clean Minimal Controls */}
         <div className="flex items-center gap-1">
@@ -143,11 +151,11 @@ const handleScroll = () => {
     <div
   ref={chatContainerRef}
   onScroll={handleScroll}
-  className="flex-1 overflow-y-auto px-3 sm:px-6 md:px-12 py-3 md:py-6 space-y-3 md:space-y-6 w-full md:max-w-5xl md:mx-auto"
+  className="flex-1 w-full max-w-5xl mx-auto overflow-y-auto overflow-x-hidden px-3 sm:px-5 md:px-8 lg:px-12 py-3 md:py-6 space-y-3 md:space-y-6"
 >
         {/* Minimal Clean ChatGPT-style Welcome Screen */}
         {!hasMessages && (
-          <div className="flex h-full min-h-[55vh] flex-col items-center justify-center text-center px-4 max-w-lg mx-auto">
+          <div className="flex h-full min-h-[60vh] flex-col items-center justify-center text-center px-4 max-w-lg mx-auto">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
