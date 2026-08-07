@@ -228,11 +228,19 @@
 }
 
 .markdown-content pre {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+margin-top: 0.75rem;
+margin-bottom: 0.75rem;
+border-radius: 0.75rem;
+overflow-x: auto;
+overflow-y: hidden;
+max-width: 100%;
+-webkit-overflow-scrolling: touch;
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.markdown-content pre code {
+display: block;
+white-space: pre;
+min-width: max-content;
 }
 
 /* KaTeX Math Equations Styling */
@@ -371,19 +379,21 @@
 }
 
 .markdown-content table {
-  display: block;
-  width: max-content;
-  min-width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+display: block;
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+overflow-y: hidden;
+-webkit-overflow-scrolling: touch;
+border-collapse: collapse;
 }
 
 .markdown-content th,
 .markdown-content td {
-  white-space: nowrap;
-  word-break: normal;
+white-space: normal;
+overflow-wrap: break-word;
+word-break: break-word;
+vertical-align: top;
 }
 
 .markdown-content a {
