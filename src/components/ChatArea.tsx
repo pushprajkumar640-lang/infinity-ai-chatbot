@@ -86,17 +86,6 @@ const handleScroll = () => {
 >
   <div className="flex items-center gap-3 min-w-0">
     <button
-  onClick={onToggleSidebar}
-  className={`rounded-lg p-2 md:p-1.5 transition-colors focus:outline-none ${
-    isLight
-      ? "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-      : "text-slate-400 hover:bg-white/10 hover:text-white"
-  }`}
-  title="Toggle Sidebar"
->
-  <Menu className="h-5 w-5" />
-</button>
-    <button
       onClick={onToggleSidebar}
       className={`rounded-lg p-2 md:p-1.5 transition-colors focus:outline-none ${
         isLight
