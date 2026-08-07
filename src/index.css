@@ -302,11 +302,11 @@ min-width: max-content;
   }
 
   .markdown-content th,
-  .markdown-content td {
-    padding: 0.4rem 0.5rem;
-    min-width: 60px;
-    white-space: nowrap;
-  }
+.markdown-content td {
+padding: 0.4rem 0.75rem;
+min-width: 160px;
+white-space: nowrap;
+}
 
   pre {
     max-width: 100%;
@@ -380,7 +380,8 @@ min-width: max-content;
 
 .markdown-content table {
 display: block;
-width: 100%;
+width: max-content;
+min-width: 100%;
 max-width: 100%;
 overflow-x: auto;
 overflow-y: hidden;
@@ -390,9 +391,9 @@ border-collapse: collapse;
 
 .markdown-content th,
 .markdown-content td {
-white-space: normal;
-overflow-wrap: break-word;
-word-break: break-word;
+white-space: nowrap;
+word-break: normal;
+overflow-wrap: normal;
 vertical-align: top;
 }
 
