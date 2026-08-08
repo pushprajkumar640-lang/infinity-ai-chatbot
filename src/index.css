@@ -289,6 +289,7 @@ min-width: max-content;
   overflow-wrap: break-word;
   word-break: normal;
   white-space: normal;
+  min-width: 0;
 }
 
   .markdown-content table {
@@ -373,9 +374,11 @@ white-space: nowrap;
 .markdown-content {
   width: 100%;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  min-width: 0;
+  overflow-wrap: break-word;
   word-break: normal;
   white-space: normal;
+  box-sizing: border-box;
 }
 
 .markdown-content table {
