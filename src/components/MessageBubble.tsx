@@ -236,7 +236,7 @@ utterance.volume = 1;
               </div>
             </div>
           ) : (
-            <div className="markdown-content w-full max-w-full min-w-0 overflow-hidden px-3 py-3">
+            <div className="markdown-content w-full max-w-full min-w-0 overflow-hidden py-3">
               {message.isError ? (
                 <div className="text-red-500 font-medium flex items-center gap-2">
                   <span>⚠️ {message.text}</span>
