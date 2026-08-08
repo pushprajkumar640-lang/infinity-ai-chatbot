@@ -286,7 +286,7 @@ min-width: max-content;
 /* ==================== MOBILE RESPONSIVE STYLING ==================== */
 @media (max-width: 640px) {
  .markdown-content {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
   white-space: normal;
 }
@@ -379,24 +379,23 @@ white-space: nowrap;
 }
 
 .markdown-content table {
-display: block;
-width: max-content;
-min-width: 100%;
-max-width: 100%;
-overflow-x: auto;
-overflow-y: hidden;
--webkit-overflow-scrolling: touch;
-border-collapse: collapse;
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
 }
 
 .markdown-content th,
 .markdown-content td {
   white-space: normal;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: normal;
   vertical-align: top;
+  min-width: 140px;
 }
-
 .markdown-content a {
   overflow-wrap: anywhere;
   word-break: break-word;
