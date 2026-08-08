@@ -168,7 +168,7 @@ utterance.volume = 1;
       </div>
 
       {/* Message Content & Metadata */}
-      <div className={`flex w-full max-w-full sm:max-w-[90%] md:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
+      <div className={`flex flex-1 min-w-0 w-full max-w-full sm:max-w-[90%] md:max-w-[80%] flex-col gap-1.5 ${isUser ? 'items-end' : 'items-start'}`}>
         
         {/* Author & Timestamp */}
         <div className={`flex items-center gap-2 text-xs font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
@@ -236,7 +236,7 @@ utterance.volume = 1;
               </div>
             </div>
           ) : (
-            <div className="markdown-content w-full max-w-full min-w-0 overflow-hidden px-3 py-3">
+           <div className="markdown-content w-full max-w-full min-w-0 overflow-hidden py-3">
               {message.isError ? (
                 <div className="text-red-500 font-medium flex items-center gap-2">
                   <span>⚠️ {message.text}</span>
