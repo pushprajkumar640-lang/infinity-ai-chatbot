@@ -298,7 +298,7 @@ utterance.volume = 1;
 
         {/* Action Toolbar */}
         {!isEditing && (
-          <div className={`flex flex-wrap items-center gap-2 transition-opacity ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
+          <div className={`flex flex-nowrap items-center gap-3 whitespace-nowrap transition-opacity ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
             <button
               onClick={handleCopy}
               title="Copy Message"
